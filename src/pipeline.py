@@ -87,6 +87,13 @@ def run(config_path: Path) -> Path:
     # CROP
     cropped = [crop_clip(clip, cfg, work_dir) for clip in clips]
 
+    # --- FASE 2: speed ramp (aditivo, desligável) ---
+    if cfg.get("speed_ramp", {}).get("enabled", False):
+        from .speed import speed_ramp_clips
+
+        cropped = speed_ramp_clips(clips, cropped, cfg, work_dir)
+    # -------------------------------------------------
+
     # RENDER
     final = render_final(cropped, cfg, work_dir, output_dir)
 
