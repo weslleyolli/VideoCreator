@@ -1,0 +1,32 @@
+# Configuração de exemplo — Recipe Reels Pipeline (Fase 1).
+# Copie para config/settings.yaml e ajuste conforme necessário:
+#   cp config/settings.example.yaml config/settings.yaml
+
+# Pastas usadas pelo pipeline.
+paths:
+  input_dir: "input"     # clipes brutos do usuário
+  work_dir: "work"       # intermediários (limpa/sobrescreve a cada execução)
+  output_dir: "output"   # vídeo final
+
+# Estratégia de normalização para 1080x1920 (vertical 9:16).
+crop:
+  # "center"   -> zoom central, corta o excesso (PADRÃO).
+  # "blur_pad" -> encaixa o frame inteiro e preenche as bordas com blur.
+  mode: "center"
+
+# Parâmetros de concatenação/exportação.
+render:
+  output_name: "final.mp4"
+  # Preset de codec/fps usado tanto no crop (re-encode) quanto no render.
+  preset:
+    fps: 30
+    video_codec: "libx264"
+    x264_preset: "medium"
+    crf: 20
+    audio_codec: "aac"
+    audio_bitrate: "192k"
+
+# Trilha de música opcional.
+music:
+  enabled: false
+  path: "input/music.mp3"
