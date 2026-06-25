@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+config/settings.yaml
+work/
+output/*
+!output/.gitkeep
+input/*
+!input/.gitkeep
+.pytest_cache/

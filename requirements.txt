@@ -1,0 +1,11 @@
+# Fase 1 — dependências mínimas.
+# A IA desenvolvedora NÃO deve adicionar libs de fases futuras (librosa, opencv)
+# nesta fase. Ver AGENT_BRIEF.md §4.
+
+PyYAML>=6.0        # leitura do config
+pytest>=8.0        # testes
+
+# Dependência de SISTEMA (não-Python), necessária no PATH:
+#   ffmpeg e ffprobe  ->  https://ffmpeg.org/download.html
+#   Ubuntu/Debian: sudo apt install ffmpeg
+#   macOS (brew):  brew install ffmpeg
