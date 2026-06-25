@@ -27,6 +27,13 @@ render:
     audio_bitrate: "192k"
 
 # Trilha de música opcional.
+# Controle de velocidade por clipe (Fase 2). Desligável; quando false o
+# pipeline se comporta exatamente como a Fase 1.
+speed_ramp:
+  enabled: true
+  # Velocidade padrão para clipes sem sufixo @Nx no nome.
+  default_speed: 2.0
+
 music:
   enabled: false
   path: "input/music.mp3"

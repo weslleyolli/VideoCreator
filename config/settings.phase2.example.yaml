@@ -1,0 +1,40 @@
+# Configuração do pipeline — Fase 2 (inclui speed_ramp)
+# Este arquivo mostra o config completo COM o bloco novo da Fase 2.
+# Para usar: cp config/settings.phase2.example.yaml config/settings.yaml
+
+paths:
+  input_dir: "input"
+  work_dir: "work"
+  output_dir: "output"
+
+crop:
+  mode: "center"          # "center" (padrão) ou "blur_pad"
+
+render:
+  output_name: "final.mp4"
+  preset:
+    fps: 30
+    crf: 20
+    x264_preset: "medium"
+
+# ----- NOVO NA FASE 2 -----
+speed_ramp:
+  enabled: true
+  # Velocidade padrão para clipes SEM sufixo @Nx no nome do arquivo.
+  # Ex.: 2.0 = 2x mais rápido. Clipes de preparo repetitivo se beneficiam de 2-4x.
+  default_speed: 2.0
+  #
+  # Para sobrescrever clipe a clipe, renomeie o arquivo com o sufixo @Nx:
+  #   01_picar@3x.mp4      -> 3x
+  #   03_montagem@1x.mp4   -> tempo real (o "money shot")
+  #   04_reveal@0.5x.mp4   -> slow (pode picotar; sem interpolação nesta fase)
+  #
+  # (OPCIONAL — só se o ramp intra-clipe for implementado)
+  # intra_clip:
+  #   enabled: false
+  #   segments: 4          # nº de segmentos do ramp
+  #   curve: [4, 3, 2, 1]  # velocidades por segmento (rápido -> tempo real)
+
+music:
+  enabled: false
+  path: "input/music.mp3"
